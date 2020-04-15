@@ -68,11 +68,10 @@ public class RTU_Update_Page extends BaseTest {
 		click("高级配置按钮");
 		WaitTime();
 		click("RTU高级配置标签");
-		moveToElement("保存按钮");
+		moveToElement("招测按钮");
 		WaitTime();
 		click("确定");
 		String expectStr="招测命令已下发";
 		assertPartialTextPresent("招测命令已下发",expectStr);
 	}
-	
 }

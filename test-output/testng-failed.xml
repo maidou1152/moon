@@ -16,6 +16,7 @@
           <include name="RTUCalibration"/>
           <include name="case01"/>
           <include name="afterSuite"/>
+          <include name="RTUHiCalibration"/>
         </methods>
       </class> <!-- com.dywl.iot.testCase.RTU.RTU_Update_Page -->
     </classes>

@@ -69,8 +69,8 @@ public class SeleniumUtil {
 		//设置后台静默模式启动浏览器
 		ChromeOptions chromeOptions=new ChromeOptions();
 		chromeOptions.addArguments("disable-infobars");
-		chromeOptions.addArguments("--headless");
-		return new ChromeDriver();
+		chromeOptions.addArguments("headless");
+		return new ChromeDriver(chromeOptions);
 	}
 
 	/**
