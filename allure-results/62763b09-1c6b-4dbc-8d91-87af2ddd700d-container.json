@@ -1,1 +1,0 @@
-{"uuid":"62763b09-1c6b-4dbc-8d91-87af2ddd700d","name":"Suite","children":["1901e483-832d-4ec4-9140-cd911af2e42b"],"befores":[{"name":"case01","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1575524517912,"stop":1575524527722}],"afters":[],"links":[],"start":1575524517896,"stop":1575524538264}
