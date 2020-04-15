@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [suite]">
+  <parameter name="driverPath" value="src/test/resources/2.53.1/chromedriver.exe"/>
+  <parameter name="seleniumVersion" value="2.X"/>
+  <parameter name="browserType" value="chrome"/>
+  <listeners>
+    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+    <listener class-name="com.dywl.iot.listener.TestngListener"/>
+    <listener class-name="com.dywl.iot.listener.RetryListener"/>
+  </listeners>
+  <test name="RTU(failed)">
+    <classes>
+      <class name="com.dywl.iot.testCase.RTU.RTU_Update_Page">
+        <methods>
+          <include name="RTUCalibration"/>
+          <include name="case01"/>
+          <include name="afterSuite"/>
+        </methods>
+      </class> <!-- com.dywl.iot.testCase.RTU.RTU_Update_Page -->
+    </classes>
+  </test> <!-- RTU(failed) -->
+</suite> <!-- Failed suite [suite] -->

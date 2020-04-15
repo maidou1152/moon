@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite" parallel="false">
+	
+<!-- 	<test name="login">
+	<classes>
+	<class name="com.dywl.iot.testCase.Work.AddWork"></class>
+	</classes>
+	</test> -->
+	
+ <test name="RTU">
+		<classes>
+			<!-- <class name="com.dywl.iot.testCase.RTU.RTU_Add_Page" /> -->
+			 <class name="com.dywl.iot.testCase.RTU.RTU_Update_Page" />
+			<!-- <class name="com.dywl.iot.testCase.RTU.RTU_Delet_Page" />  -->
+		</classes>
+</test> 
+		<test name="Lamp">
+		<classes>
+			<!-- <class name="com.dywl.iot.testCase.Lamp.Add_Lamp_Page" /> -->
+		<!-- 	<class name="com.dywl.iot.testCase.Dandeng.SendML75" />  -->
+			<!--  <class name="com.dywl.iot.testCase.Dandeng.SendPage" />  --> 
+		 <!-- <class name="com.dywl.iot.testCase.Dandeng.TestSP" />   -->
+			<!-- <class name="com.dywl.iot.testCase.Lamp.Update_Lamp_Page" />
+			<class name="com.dywl.iot.testCase.Lamp.Delet_Lamp_Page" /> -->
+		</classes>
+		</test>
+	
+	<!-- <test name="Cover">
+	<classes>
+	<class name="com.dywl.iot.testCase.Cover.Success_Add_Test"></class>
+	</classes>
+	</test> -->
+	 <!--
+	<test name="User">
+	<classes>
+	<class name="com.dywl.iot.testCase.User.Add_User_Page"></class>
+	</classes>
+	</test>
+	
+
+	
+	<test name="workItem">
+	<classes>
+	<class name="com.dywl.iot.testCase.workItem.Add_WorkItem_Page"></class>
+	</classes>
+	</test> -->
+	
+<!-- 	 <test name="123">
+		<classes>
+		<class name="com.dywl.iot.testCase.Cryptii" />
+		</classes> -->
+<!-- 	</test>   -->  -->
+	
+
+<!-- <test name="这是测试模块">
+        <classes>
+            <class name="com.nvr.report.ReportTest"/>
+            <methods>
+                <include name="test1"/>
+                <include name="test2"/>
+                <include name="test3"/>
+                <include name="logDemo"/>
+            </methods>
+        </classes>
+    </test>
+ -->
+
+	<!-- Test -->
+	<!--参数化 -->
+	<!--支持浏览器的类型：ie、chrome、firefox-->
+	<parameter name="browserType" value="chrome"></parameter>
+	<!-- 支持selenium版本:2.X、3.X -->
+	<parameter name="seleniumVersion" value="2.X"></parameter>
+	<!-- 各个浏览器相关的驱动文件路径 
+		ie:			src/test/resources/2.53.1/IEDriverServer.exe 
+		chrome:		src/test/resources/2.53.1/chromedriver.exe 
+		firefox:	src/test/resources/2.53.1/geckodriver.exe 
+	 -->
+	<parameter name="driverPath" value="src/test/resources/2.53.1/chromedriver.exe"></parameter>
+	<listeners>
+	<!-- reportng监听器 -->
+	<listener class-name="org.uncommons.reportng.HTMLReporter"></listener>
+	<!-- 监听类 -->
+	<!-- 
+	<listener class-name="com.dywl.iot.listener.TestFailureListener"></listener>
+	<listener class-name="com.nvr.report.ExtentTestNGIReporterListener"/>
+	 -->
+	<!--allure报表截图  -->
+	<listener class-name="com.dywl.iot.listener.TestngListener"></listener>
+	<!--用例执行失败监听机制  -->
+	<listener class-name="com.dywl.iot.listener.RetryListener"></listener>
+	</listeners> 
+</suite>
