@@ -10,18 +10,26 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 import com.dywl.iot.base.Locator;
-import com.dywl.iot.testCase.RTU.RTU_Add_Page;
+import com.dywl.iot.pojo.Page;
 
 public class PagesUtil {
 
+	/**
+	 * 通过page的name,获取页面元素
+	 */
 	public	static Map<String, Map<String, Locator>> pagesMap = null;
 	
+	/**
+	 *通过page的desc,获取page对象 
+	 */
+	public	static Map<String, Page> pageMap = null;
 	
 	/**
-	 * 
+	 * 静态代码块，只加载一次
 	 */
 	static {
 		loadPages();
+		loadPage();
 	}
 	
 	/**
@@ -34,8 +42,8 @@ public class PagesUtil {
 		SAXReader reader=new SAXReader();
 		// 通过reader读取xml文件
 		try {
-			// 得到文档对象
-			Document document=reader.read(PagesUtil.class.getResourceAsStream("/pages.xml"));
+			// 得到文档对象  /web_auto/src/test/resources/page/pages.xml
+			Document document=reader.read(PagesUtil.class.getResourceAsStream("/page/pages.xml"));
 			// 获得根标签（元素）
 			Element element = document.getRootElement();
 			// 获得这个根元素下所有我想要的元素--page标签
@@ -80,25 +88,61 @@ public class PagesUtil {
 	}
 	
 	
+	/**
+	 * 加载所有页面的page元素
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public static Map<String, Page> loadPage() {
+		//xml
+		SAXReader reader=new SAXReader();
+		// 通过reader读取xml文件
+		try {
+			// 得到文档对象  /web_auto/src/test/resources/page/pages.xml
+			Document document=reader.read(PagesUtil.class.getResourceAsStream("/page/pages.xml"));
+			// 获得根标签（元素）
+			Element element = document.getRootElement();
+			// 获得这个根元素下所有我想要的元素--page标签
+			List<Element> pagesElements = element.elements("page");
+			// 创建一个map，用来存放所有的页面map,value是每个页面的map信息，key为页面的名称
+			// 告诉我一个页面的名称，就能把这个页面找到，
+			// 告诉我某个元素的描述，就能找到这个元素
+			pageMap = new HashMap<String, Page>();
+			for (Element pagesElement : pagesElements) {
+				// 得到当前页面的名称
+				String pageName = pagesElement.attributeValue("name");
+				String pageDesc = pagesElement.attributeValue("desc");
+				// 这个map具有这个页面的所有元素信息
+				Page page=new Page(pageName, pageDesc);
+				pageMap.put(pageDesc,page);
+			}
+		} catch (DocumentException e) {
+			e.printStackTrace();
+		}
+		return pageMap;
+	}
+	
 	public static void main(String[] args) {
+		Map<String, Map<String, Locator>> pagesMap = loadPages();
 		
-		/*Map<String, Map<String, Locator>> pagesMap = loadPages();
+		Map<String, Page> pageMap = loadPage();
 		// 我要找到注册页面的注册按钮
-		Locator pa=pagesMap.get("iot登录页面").get("用户名输入框");
-		Locator pa1=pagesMap.get("iot登录页面").get("密码输入框");
+		//Locator pa=pagesMap.get("iot登录页面").get("用户名输入框");
+		String name=pageMap.get("配电箱删除页面").getName();
+		Locator pa=pagesMap.get(name).get("删除按钮");
+		//Locator pa1=pagesMap.get("iot登录页面").get("密码输入框");
 		System.out.println("-------------");
 		System.out.println(pa);
-		System.out.println(pa1);*/
+		System.out.println(name);
+		//System.out.println(pa1);
 		//反射
 		//如果要得到一个类的细节，首先要拿到一个字节码对象，这个字节码对象就具有这个类的所有的细节
-		//1:通过对象来获得，对象.getClass()
+	/*	//1:通过对象来获得，对象.getClass()
 		RTU_Add_Page page=new RTU_Add_Page();
 		System.out.println(page.getClass().getName());
 		System.out.println(	page.getClass().getSimpleName());
 		//2.类.class
 		Class<RTU_Add_Page> clazs=RTU_Add_Page.class;
-		System.out.println(clazs.getSimpleName());
-	
-		
+		System.out.println(clazs.getSimpleName());*/
 	}
 }

@@ -28,8 +28,8 @@ public class FindElementTest {
 		//tagname
 		
 		//className
-		WebElement inputEleme2=driver.findElement(By.className("s_ipt"));
-		String actul02=inputEleme.getAttribute("autocomplete");
+		//WebElement inputEleme2=driver.findElement(By.className("s_ipt"));
+		//String actul02=inputEleme.getAttribute("autocomplete");
 		Assert.assertEquals(actul01, "off");
 		//cssSelector
 		driver.findElement(By.cssSelector("input.s_ipt")).sendKeys("java");

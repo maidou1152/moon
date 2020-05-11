@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -19,6 +18,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Parameters;
 
 import com.dywl.iot.listener.TestngListener;
+import com.dywl.iot.page.LoginPage;
 import com.dywl.iot.util.PagesUtil;
 import com.dywl.iot.util.PropertiesUtil;
 import com.dywl.iot.util.SeleniumUtil;
@@ -48,7 +48,6 @@ public class BaseTest {
 	@Parameters(value={"browserType","seleniumVersion","driverPath"})
 	public void case01(String browserType,String seleniumVersion,String driverPath) {
 		driver= SeleniumUtil.openBrowser(browserType, seleniumVersion, driverPath);
-		//String url="http://183.129.159.166:10056/login";
 		login();
 	}
 
@@ -57,17 +56,17 @@ public class BaseTest {
 	 */
 	private void login() {
 		to("iotLogin");
-		driver.manage().window().maximize();
-		Actions action=new Actions(driver);
-		action.sendKeys(Keys.TAB).perform();
-		driver.findElement(By.id("name")).sendKeys("admin327");
-		WebElement inputPassword=driver.findElement(By.id("password"));
-		new Actions(driver).moveToElement(inputPassword).perform();
-		//112233  ld123!@#.com
-		inputPassword.sendKeys("12345678!");
-		WebElement loginButton=driver.findElement(By.tagName("button"));
+		maxWindow();
+		/*Actions action=new Actions(driver);
+		action.sendKeys(Keys.TAB).perform();*/
+		type("用户名输入框", "admin327", LoginPage.class);
+		moveToElement("密码输入框", LoginPage.class);
+		//ld123!@#.com
+		type("密码输入框", "12345678!",LoginPage.class);
+	/*	WebElement loginButton=driver.findElement(By.tagName("button"));
 		new Actions(driver).moveToElement(loginButton).perform();
-		loginButton.click();
+		loginButton.click();*/
+		moveToElement("登录按钮", LoginPage.class);
 	}
 	
 	@AfterSuite
@@ -77,7 +76,7 @@ public class BaseTest {
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		driver.quit();
+		//driver.quit();
 	}
 	
 	/**
@@ -124,6 +123,31 @@ public class BaseTest {
 	protected WebElement getElement(String keyword,Class<?> clazz) {
 		return getElement(keyword,50,clazz);
 	}
+	
+	
+	
+	protected WebElement getElement(String keyword,String pageName){		
+		Class<?> pageclazz = getPageName(pageName);
+		return getElement(keyword, 30, pageclazz);
+	}
+
+	/**
+	 * 通过关键字获取pageName
+	 * @param pageName
+	 * @return
+	 */
+	private Class<?> getPageName(String keyWord) {
+		String name=PagesUtil.loadPage().get(keyWord).getName();
+		//String 转 Class类对象
+		Class<?> pageclazz = null;
+		try {
+			pageclazz = Class.forName(name);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		return pageclazz;
+	}
+	
 	
 	/**
 	 * 智能查找元素
@@ -325,6 +349,39 @@ public class BaseTest {
 		webElement.sendKeys(content);
 	}
 	
+	protected void type(String keyWord,String content,String pageName) {
+		logger.info("往["+keyWord+"]元素写入内容:["+content+"]");
+		WebElement webElement=getElement(keyWord,pageName);
+		webElement.sendKeys(content);
+	}
+	
+	
+	/**
+	 * 在当前页面清除内容
+	 * @param keyWord 要输入的内容
+	 * @param content 输入框
+	 */
+	protected void clear(String keyWord) {
+		clear(keyWord, this.getClass());
+	}
+	
+	/**
+	 * 在指定页面清除内容
+	 * @param keyWord
+	 * @param content
+	 * @param pageclazz
+	 */
+	protected void clear(String keyWord,Class<?> pageclazz) {
+		logger.info("往["+keyWord+"]元素清楚内容");
+		WebElement webElement=getElement(keyWord,pageclazz);
+		webElement.clear();
+	}
+	
+	protected void clear(String keyWord,String pageName) {
+		Class<?> pageclazz = getPageName(pageName);
+		clear(keyWord, pageclazz);
+	}
+	
 	/**
 	 * 点击当前页面的元素
 	 * @param webElement 要点击的元素
@@ -342,6 +399,14 @@ public class BaseTest {
 		WebElement webElement=getElement(keyword,pageclazz);
 		webElement.click();
 	}
+	
+	protected void click(String keyword,String pageName) {
+		logger.info("单击元素:["+keyword+"]");
+		WebElement webElement=getElement(keyword,pageName);
+		webElement.click();
+	}
+	
+	
 	
 	/**
 	 * 获取当前页面元素的文本
@@ -382,6 +447,14 @@ public class BaseTest {
 		logger.info("获取到的元素["+keyword+"]");
 	}
 	
+	protected void moveToElement(String keyword,String pageName) {	
+		WebElement webElement=getElement(keyword,pageName);
+		Actions actions=new Actions(driver);
+		actions.moveToElement(webElement).perform();
+		actions.click(webElement).perform();
+		logger.info("获取到的元素["+keyword+"]");
+	}
+	
 	/**
 	 * 当前页面的鼠标移动事件
 	 * @param keyword
@@ -389,6 +462,34 @@ public class BaseTest {
 	protected void moveToElement(String keyword) {
 		 moveToElement(keyword,this.getClass());	
 	}
+	
+	/**
+	 * 当前页面移动
+	 * @param keyword
+	 * @param x
+	 * @param y
+	 */
+	protected void moveToElementXY(String keyword,int x,int y) {	
+		moveToElementXY(keyword,x,y,this.getClass());
+	}
+	
+	/**
+	 * 指定页面移动
+	 * @param keyword
+	 * @param x
+	 * @param y
+	 * @param pageclazz
+	 */
+	protected void moveToElementXY(String keyword,int x,int y,Class<?> pageclazz) {
+		WebElement webElement=getElement(keyword,pageclazz);
+		new Actions(driver).moveToElement(webElement,x,y).perform();	
+	}
+	
+	protected void moveToElementXY(String keyword,int x,int y,String pageName){
+		Class<?> pageclazz = getPageName(pageName);
+		moveToElementXY(keyword, x, y, pageclazz);
+	}
+	
 	
 	/**
 	 * 当前页面,鼠标从一个元素移动另一个元素
@@ -438,8 +539,8 @@ public class BaseTest {
 	 */
 	protected List<WebElement> getElements(By by) {
 		return getElements(5, by);
-	}
-
+	}	
+	
 	/**
 	 * 硬性等待
 	 */
@@ -475,6 +576,10 @@ public class BaseTest {
 		Assert.assertTrue(actualText.contains(expectedText));
 	}
 	
+	protected void assertPartialTextPresent(String keyword,String expectedText,String pageName){
+		Class<?> pageclazz=getPageName(pageName);
+		assertPartialTextPresent(keyword, expectedText, pageclazz);
+	}
 	/**
 	 * 断言当前页面元素文本值包含某文本
 	 * @param keyword

@@ -31,7 +31,7 @@ public class RTU_Add_Page extends BaseTest {
 		type("输入RTU编号",rtuno.format(new Date()));
 		click("选择照明场景");
 		click("选择道路照明");
-		type("输入安装地址","安装地址"+gprs);
+		type("输入安装地址","安装地址"+gprs.format(new Date()));
 		/*WebElement saveButton = getElement("保存按钮");
 		new Actions(driver).moveToElement(saveButton).perform();
 		saveButton.click();*/
@@ -89,7 +89,7 @@ public class RTU_Add_Page extends BaseTest {
 		type("输入配电箱名称", "R_"+rtuname);
 		type("输入GPRS",gprs.format(new Date()));
 		type("输入RTU编号",rtuno.format(new Date()));
-		type("输入安装地址","安装地址"+gprs);
+		type("输入安装地址","安装地址"+gprs.format(new Date()));
 		moveToElement("保存按钮");
 		WaitTime();
 		String expectStr="请选择照明场景";
@@ -120,5 +120,5 @@ public class RTU_Add_Page extends BaseTest {
 		SimpleDateFormat lampNum = new SimpleDateFormat("yyMMddHms");
 //		SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
         System.out.println(lampNum.format(new Date()));// new Date()为获取当前系统时间
-	}
+	}  
 }

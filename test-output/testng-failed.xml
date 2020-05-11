@@ -5,20 +5,18 @@
   <parameter name="seleniumVersion" value="2.X"/>
   <parameter name="browserType" value="chrome"/>
   <listeners>
-    <listener class-name="org.uncommons.reportng.HTMLReporter"/>
     <listener class-name="com.dywl.iot.listener.TestngListener"/>
     <listener class-name="com.dywl.iot.listener.RetryListener"/>
   </listeners>
   <test name="RTU(failed)">
     <classes>
-      <class name="com.dywl.iot.testCase.RTU.RTU_Update_Page">
+      <class name="com.dywl.iot.testCase.RTU.Success_Add_Test">
         <methods>
-          <include name="RTUCalibration"/>
           <include name="case01"/>
+          <include name="addRtu"/>
           <include name="afterSuite"/>
-          <include name="RTUHiCalibration"/>
         </methods>
-      </class> <!-- com.dywl.iot.testCase.RTU.RTU_Update_Page -->
+      </class> <!-- com.dywl.iot.testCase.RTU.Success_Add_Test -->
     </classes>
   </test> <!-- RTU(failed) -->
 </suite> <!-- Failed suite [suite] -->

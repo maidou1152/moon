@@ -155,7 +155,6 @@ public class ScreenshotUtil {
 		Date date = new Date();
 		long time = date.getTime();
 		System.out.println(time);
-		Thread.sleep(1000);
 		Date date2 = new Date();
 		System.out.println(date2.getTime());
 	}

@@ -14,6 +14,7 @@ import com.dywl.iot.util.ExcelUtil;
  * @author asus
  *
  */
+@SuppressWarnings("unchecked")
 public class ExcelRowObjectConfig {
 
 	private static List<ApiInfo> apiInfoList;

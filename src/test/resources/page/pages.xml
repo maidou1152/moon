@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--这是所有页面的描述 -->
+<pages>
+	<!-- <page name="iot登录页面"> -->	
+		<page name="com.dywl.iot.page.LoginPage" desc="登录页面">
+		<locator by="id" value="name" desc="用户名输入框"></locator>
+		<locator by="id" value="password" desc="密码输入框"></locator>
+		<locator by="tagName" value="button" desc="登录按钮"></locator>
+		<locator by="cssSelector" value="span[style='color: rgb(244, 68, 68);']" desc="用户名或密码错误"></locator>
+		<locator by="cssSelector" value="span[style='color: rgb(0, 204, 255);']" desc="密码不能为空！"></locator>
+		<locator by="cssSelector" value="span[style='color: rgb(0, 204, 255);']" desc="用户名不能为空！"></locator>
+		<locator by="cssSelector" value="span[style='color: rgb(244, 68, 68);']" desc="用户名或密码错误"></locator>
+		<locator by="cssSelector" value="span[style='color: rgb(62, 231, 70);']" desc="登录成功"></locator>
+	</page>
+	
+	<!--导航栏  -->
+	<page name="com.dywl.iot.page.NavigationPage" desc="导航页面">
+	<locator by="cssSelector" value="span[class='icon-running']" desc="点击运行"></locator>
+	<locator by="cssSelector" value="span[class='icon-rtu']" desc="点击配电箱"></locator>
+	<locator by="cssSelector" value="span[class='icon-lamp']" desc="点击灯杆"></locator>
+	<locator by="cssSelector" value="span[class='side-menu']" desc="点击返回"></locator>
+	</page>
+	
+	
+	<!-- <page name="配电箱新增页面"> -->
+	<page name="com.dywl.iot.page.RtuAddPage" desc="配电箱新增页面">
+		<locator by="cssSelector" value="button[class='ant-btn ant-btn-add ant-btn-icon-only']" desc="新增配电箱按钮"></locator>
+		<locator by="cssSelector" value="input[placeholder='这里输入名称']" desc="输入配电箱名称"></locator>
+		<locator by="id" value="serialNumber" desc="输入GPRS"></locator>
+		<locator by="id" value="channelNumber" desc="输入RTU编号"></locator>
+		<locator by="xpath" value="//div[contains(text(),'请选择照明场景')]" desc="选择照明场景"></locator>
+		<locator by="xpath" value="/html/body/div[4]/div/div/div/ul/li[1]" desc="选择道路照明"></locator>
+		<locator by="cssSelector" value="input[placeholder='这里输入安装地址']" desc="输入安装地址"></locator>
+		<locator by="cssSelector" value="button[type='submit']" desc="保存按钮"></locator>
+		<locator by="xpath" value="//*[@id='rtuTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[1]/td[3]/span/span" desc="配电箱名称"></locator>
+		<!-- 断言 -->
+		<locator by="xpath" value="/html/body/div[4]/div/span/div/div/div/div[1]/span[2]" desc="创建成功"></locator>
+		<locator by="cssSelector" value="div[class='ant-form-explain']" desc="请输入GPRS"></locator>
+		<locator by="cssSelector" value="div[class='ant-form-explain']" desc="请输入RTU编号"></locator>
+		<locator by="cssSelector" value="div[class='ant-form-explain']" desc="请选择照明场景"></locator>
+	</page>
+		
+	<!-- 配电箱修改页面-->
+	<page name="com.dywl.iot.page.RtuUpdatePage" desc="配电箱修改页面">
+	<locator by="xpath" value="//*[@id='rtuTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[1]/td[1]/span/label/span/input" desc="选中第一行的数据"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-edit ant-btn-icon-only']" desc="修改配电箱按钮"></locator>
+	<locator by="cssSelector" value="input[placeholder='这里输入名称']" desc="输入配电箱名称"></locator>
+	<locator by="cssSelector" value="button[type='submit']" desc="保存按钮"></locator>
+	<!-- 开关 -->
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div[2]/div/div[2]/div[1]/div[2]/div[1]/div[1]/div[1]/span/i" desc="添加开关"></locator>
+	<locator by="id" value="switchNumber" desc="开关名称"></locator>
+	<locator by="xpath" value="//*[@id=’root']/div/div[6]/div/div[3]/div[2]/span/form/div[2]/div[1]/div/div[1]/div[2]/div/div/div/div" desc="接线柱A"></locator>
+	
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[3]/div[2]/span/form/div[3]/div[3]/button" desc="开关保存"></locator>
+	
+	<!-- 高级配置 -->
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-setting ant-btn-icon-only']" desc="高级配置按钮"></locator>
+	<locator by="cssSelector" value="i[class='anticon anticon-save']" desc="高级配置保存按钮"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg']" desc="确定"></locator>
+	<!-- 快速标定 -->
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div[1]/div/div/div/div/div[3]" desc="快速标定标签"></locator>
+	<!-- RTU高级配置 -->
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div[1]/div/div/div/div/div[4]" desc="RTU高级配置标签"></locator>
+	<locator by="cssSelector" value="i[class='anticon anticon-sync']" desc="招测按钮"></locator>
+	<!-- 控制面板定制 -->
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div[1]/div/div/div/div/div[5]" desc="控制面板标签"></locator>
+	<!--断言  -->
+	<locator by="xpath" value="/html/body/div[4]/div/span/div/div/div/div[1]/span[2]" desc="RTU标定修改成功"></locator>
+	<locator by="xpath" value="/html/body/div[4]/div/span/div/div/div/div[1]/span[2]" desc="招测命令已下发"></locator>
+	</page>
+	
+	<!-- 配电箱删除页面 -->
+	<page name="com.dywl.iot.page.RtuDeletePage" desc="配电箱删除页面">
+	<locator by="xpath" value="//*[@id='rtuTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[3]/td[1]/span/label/span/input" desc="选中第三行的数据"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-delete ant-btn-icon-only']" desc="删除按钮"></locator>
+	<locator by="cssSelector" value="div[class='ant-modal-body']" desc="确定删除此配电箱？"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg'" desc="点击确定按钮"></locator>
+	<locator by="cssSelector" value="input[placeholder='请输入密码']" desc="输入密码"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg'" desc="确定删除"></locator>
+	</page>
+	
+	<!-- 灯杆添加页面 -->
+	<page name="com.dywl.iot.page.LampAddPage" desc="灯杆添加页面">
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-add ant-btn-icon-only']" desc="新增灯杆"></locator>
+	<locator by="cssSelector" value="input[class='ant-input ant-input-lg lampName']" desc="输入灯杆编号"></locator>
+	<locator by="xpath" value="//div[contains(text(),'请选择照明场景')]" desc="选择照明场景"></locator>
+	<locator by="xpath" value="//li[contains(text(),'道路照明')]" desc="选择道路照明"></locator>
+	<locator by="xpath" value="//li[contains(text(),'景观照明')]" desc="选择景观照明"></locator>
+	<locator by="id" value="longitude" desc="经度"></locator>
+	<locator by="id" value="latitude" desc="纬度"></locator>
+	<locator by="xpath" value="//div[contains(text(),'添加')]" desc="点击添加标签"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div/button" desc="保存灯杆按钮"></locator>
+	<locator by="xpath" value="//*[@id='lampTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[1]/td[3]" desc="灯杆名称"></locator>
+	</page>
+	
+	<!-- 添加2G单灯控制器页面  -->
+	<page name="com.dywl.iot.page.LampUpdatePage" desc="灯杆编辑页面">
+	<locator by="xpath" value="//*[@id='lampTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[3]/td[1]/span/label/span/input" desc="选中第一行的数据"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-edit ant-btn-icon-only']" desc="灯杆编辑按钮"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn lampbtn2___v4ltL ant-btn-primary'" desc="控制器按钮"></locator>
+	<!-- <locator by="cssSelector" value="div[title='PLC单灯']" desc="单灯模式"></locator> -->
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[3]/div[2]/div/div/div[2]/div[1]/div/div[1]/form/div[1]/div[2]/div/div/div/div" desc="单灯模式"></locator>
+	<locator by="xpath" value="//body/div[5]/div/div/div/ul/li[2]" desc="GPRS单灯"></locator>
+	<!-- <locator by="cssSelector" value="li[text()='GPRS单灯']" desc="GPRS单灯"></locator> -->
+	<!-- /html/body/div[5]/div/div/div/ul/li[2] --> 
+	<locator by="id" value="serialNumber" desc="SIM卡号"></locator>
+	<locator by="id" value="channelNumber" desc="单灯编号"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div/button[2]" desc="保存按钮"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[3]/div[2]/div/div/div[2]/div[1]/div/div[2]/button" desc="单灯保存按钮"></locator>
+	</page>
+	
+	<!-- 灯杆删除页面 -->
+	<page name="com.dywl.iot.testCase.Lamp.Delet_Lamp_Page">
+	<locator by="xpath" value="//*[@id='lampTable']/div[1]/div/div/div/div/div/div[2]/table/tbody/tr[1]/td[1]/span/label/span/input" desc="选中第一行的数据"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-delete ant-btn-icon-only']" desc="删除灯杆按钮"></locator>
+	<locator by="cssSelector" value="div[class='ant-modal-body']" desc="确定删除该灯杆？"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg'" desc="确定删除"></locator>
+	<locator by="cssSelector" value="input[placeholder='请输入密码']" desc="输入密码"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg'" desc="确定按钮"></locator>
+	</page>
+	
+	<!-- 工单添加页面 -->
+	<page name="com.dywl.iot.page.WorkItemAddPage">
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-add ant-btn-icon-only']" desc="新增工单"></locator>
+	<locator by="xpath" value="//*[@id='OrderAdd']/div[2]/div/form/div[1]/div[1]/div/div[3]/div[2]/div/div/div/div" desc="请先选择工单类型"></locator>
+	<locator by="cssSelector" value="ul[class='ant-select-dropdown-menu ant-select-dropdown-menu-vertical  ant-select-dropdown-menu-root']" desc="设备类型"></locator>
+	<locator by="xpath" value="//div[contains(text(),'添加工单')]" desc="添加工单"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn rightButton___21peN ant-btn-primary']" desc="提交按钮"></locator>
+	<locator by="xpath" value="//button[contains(text(),'暂存')]" desc="暂存按钮"></locator>
+	<locator by="id" value="callerName" desc="来电人姓名"></locator>
+	<locator by="cssSelector" value="textarea[placeholder='请输入工单内容']" desc="输入工单内容"></locator>
+	</page>
+	
+	<!-- 用户添加页面 -->
+	<page name="com.dywl.iot.page.UserAddPage">
+	<locator by="cssSelector" value="span[class='opAdd___135J1']" desc="用户添加按钮"></locator>
+	<locator by="xpath" value="//*[@id='name']" desc="输入用户名"></locator>
+	<locator by="id" value="password" desc="输入密码"></locator>
+	<!-- <locator by="cssSelector" value="/html/body/div[5]/div/div[2]/div/div[1]/div[2]/form/div[7]/div[2]/div" desc="选中责任区"></locator> -->
+	<locator by="cssSelector" value="span[class='select1___1iZJu ant-select ant-select-enabled']" desc="选中责任区"></locator>
+	<locator by="cssSelector" value="span[title='三标1']" desc="三标1"></locator>
+	<locator by="cssSelector" value="div[class='ant-select-lg ant-select ant-select-enabled']" desc="选中角色"></locator>
+	<locator by="xpath" value="/html/body/div[6]/div/div/div/ul/li[27]" desc="选择角色"></locator>
+	<!--/html/body/div[6]/div/div/div/ul/li[27]  -->
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-primary ant-btn-lg']" desc="确定按钮"></locator>
+	</page>
+	
+	<!-- 灯杆命令下发页面  SendML2 -->
+	<page name="com.dywl.iot.page.LampSendPage">
+	<locator by="cssSelector" value="span[class='icon-running']" desc="点击运行"></locator>
+	<locator by="cssSelector" value="span[class='icon-lamp']" desc="点击灯杆"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div/div[2]/div/div[2]/div[3]/button" desc="点击配电箱"></locator>
+	<locator by="cssSelector" value="input[placeholder='请输入名称/Rtu编号/安装地址/GPRS通讯号']" desc="输入RTU编号"></locator>
+	<locator by="cssSelector" value="input[type='radio']" desc="选择配电箱"></locator>
+	<locator by="cssSelector" value="i[class='anticon anticon-search ant-input-search-icon']" desc="查询"></locator>
+	<locator by="cssSelector" value="button[class='ant-btn rtuListConfirm']" desc="点击确认"></locator>
+	<locator by="xpath" value="//*[@id='lampTable']/div[2]/div/div/div/div" desc="点击20页"></locator>
+	<locator by="xpath" value="//div[@class='ant-select-dropdown ant-select-dropdown--single ant-select-dropdown-placement-topLeft']/div/ul/li[5]" desc="选择500页"></locator>
+	<locator by="xpath" value="//*[@id='lampTable']/div[1]/div/div/div/div/div/div[1]/table/thead/tr/th[1]/span/div/label/span/input" desc="列表全选"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div/div[2]/div/div[1]/div[4]/div/div" desc="控制"></locator>
+	<locator by="xpath" value="//div[@class='ant-select-dropdown ant-select-dropdown--single ant-select-dropdown-placement-bottomLeft']/div/ul/li[6]" desc="批量开关命令"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div/div[1]/div/div/div/div/div[3]" desc="移动到调光"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div[1]/div[2]/div/div[4]" desc="0"></locator>
+	<locator by="cssSelector" value="span[class='sliderValueAll100___mgvgH']" desc="100"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div[2]/div/button" desc="下发"></locator>
+	<locator by="id" value="rcDialogTitle0" desc="点击模态框"></locator>
+	<locator by="cssSelector" value="input[placeholder='请输入密码']" desc="输入密码"></locator>
+	<locator by="xpath" value="/html/body/div[8]/div/div[2]/div/div[1]/div[3]/button[2]" desc="密码确定"></locator>
+	<locator by="cssSelector" value="span[class='ant-modal-close-x']" desc="关闭密码框"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[1]/span" desc="关闭命令框"></locator>
+	<locator by="xpath" value="///html/body/div[4]/div/span/div/div/div/div[1]/span[2]" desc="命令下发tips"></locator>
+	</page>
+	
+	<!--防盗模块  -->
+	<page name="com.dywl.iot.page.GuardAddPage" desc="防盗添加页面">
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-add ant-btn-icon-only']" desc="添加防盗"></locator>
+	<locator by="id" value="name" desc="主机名称"></locator>
+	<locator by="id" value="channelNumber" desc="设备编号"></locator>
+	<locator by="id" value="serialNumber" desc="通讯号"></locator>
+	<locator by="cssSelector" value="div[title='防盗2']" desc="防盗2"></locator>
+	<locator by="xpath" value="/html/body/div[5]/div/div/div/ul/li[2]" desc="防盗3"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div[2]/div[2]/div/form/div[1]/div[3]/div[2]/div/input" desc="配电箱"></locator>
+	<locator by="xpath" value="//div[5]/div/div[2]/div/div[1]/div[2]/div[1]/div/div/div/div/div/div/div[2]/table/tbody/tr[1]/td[1]/span/label/span/input" desc="选择第一条配电箱"></locator>
+	<locator by="xpath" value="/html/body/div[5]/div/div[2]/div/div[1]/button/span" desc="关闭配电箱"></locator>
+	<locator by="id" value="installedAddress" desc="安装地址"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div[2]/div[2]/div/div/button" desc="保存"></locator>
+	<!--断言  -->
+	<locator by="cssSelector" value="div[class='ant-form-explain']" desc="请输入设备名称"></locator>
+	<locator by="cssSelector" value="div[class='ant-form-explain']" desc="请输入设备编号"></locator>
+	</page>
+	
+	<page name="com.dywl.iot.page.CoverAddPage">
+	<locator by="cssSelector" value="button[class='ant-btn ant-btn-add ant-btn-icon-only']" desc="添加井盖"></locator>
+	<locator by="id" value="name" desc="井盖名称"></locator>
+	<locator by="id" value="longitude" desc="经度"></locator>
+	<locator by="id" value="latitude" desc="纬度"></locator>
+	<locator by="xpath" value="//*[@id='root']/div/div[6]/div/div[2]/div[2]/div/form/div[8]/button" desc="保存按钮"></locator>
+	</page>
+	
+</pages>

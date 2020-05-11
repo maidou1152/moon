@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 import com.dywl.iot.base.BaseTest;
 import com.dywl.iot.util.Excel;
-import com.dywl.iot.util.PropertiesUtil;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
@@ -163,10 +162,10 @@ public class SendPage extends BaseTest {
 	@DataProvider
 	public Object[][] getDatas()
 	{
-		String startRow=PropertiesUtil.getNBProperties("startRow");
+		/*String startRow=PropertiesUtil.getNBProperties("startRow");
 		String endRow=PropertiesUtil.getNBProperties("endRow");
 		int start=Integer.parseInt(startRow);
-		int end=Integer.parseInt(endRow);
+		int end=Integer.parseInt(endRow);*/
 		//读取出测试用例需要的各种参数
 		Object[][] datas = Excel.readExcel("/rtuno.xlsx", 0, 1, 1, 2, 2);
 		for (Object[] objects : datas) {

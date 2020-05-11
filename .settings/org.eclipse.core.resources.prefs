@@ -4,6 +4,7 @@ encoding//src/main/resources=UTF-8
 encoding//src/test/java=UTF-8
 encoding//src/test/java/org/uncommons/reportng/ReportNGUtils.java=UTF-8
 encoding//src/test/resources=UTF-8
+encoding//src/test/resources/NB.properties=UTF-8
 encoding//src/test/resources/allure.properties=UTF-8
 encoding//src/test/resources/log4j.properties=UTF-8
 encoding//src/test/resources/rtuno.properties=UTF-8

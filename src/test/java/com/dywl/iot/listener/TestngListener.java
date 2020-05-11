@@ -21,7 +21,6 @@ public class TestngListener extends TestListenerAdapter {
 	private Logger logger=Logger.getLogger(TestngListener.class);
 	
 	@Override
-	@SuppressWarnings("static-access")
 	public void onTestFailure(ITestResult tr) {
 		super.onTestFailure(tr);
 		BaseTest bt=(BaseTest) tr.getInstance();

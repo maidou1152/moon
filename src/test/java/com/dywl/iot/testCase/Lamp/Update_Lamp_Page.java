@@ -8,9 +8,10 @@ import com.dywl.iot.base.BaseTest;
 
 public class Update_Lamp_Page extends BaseTest {
 
+	
 	@Test
 	public void updateLamp() {
-		//to("lampUrl");
+		to("lampUrl");
 		getElement("选中第一行的数据").click();
 		getElement("灯杆编辑按钮").click();
 		getElement("控制器按钮").click();

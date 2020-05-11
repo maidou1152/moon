@@ -70,7 +70,7 @@ public class SeleniumUtil {
 		ChromeOptions chromeOptions=new ChromeOptions();
 		chromeOptions.addArguments("disable-infobars");
 		chromeOptions.addArguments("headless");
-		return new ChromeDriver(chromeOptions);
+		return new ChromeDriver();
 	}
 
 	/**

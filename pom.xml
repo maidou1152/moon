@@ -6,10 +6,11 @@
   
   <properties>
   	  <allure.version>2.10.0</allure.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-        <aspectj.version>1.9.2</aspectj.version>
-        <suiteXmlFile>testng.xml</suiteXmlFile>
+      <aspectj.version>1.8.10</aspectj.version>
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <java.version>1.8</java.version>
+      <aspectj.version>1.9.2</aspectj.version>
+      <suiteXmlFile>testng.xml</suiteXmlFile>
   </properties>
   
   <dependencies>
@@ -19,12 +20,13 @@
    		 <groupId>io.qameta.allure</groupId>
    		 <artifactId>allure-testng</artifactId>
   		 <version>2.13.2</version>
-  		 <exclusions>
+  		 <scope>test</scope>
+  	<!-- 	 <exclusions>
   		 	<exclusion>
   		 		<artifactId>testng</artifactId>
   		 		<groupId>org.testng</groupId>
   		 	</exclusion>
-  		 </exclusions>
+  		 </exclusions> -->
 		</dependency>
 
 		<!-- 这是selenium依赖 -->
@@ -82,7 +84,7 @@
 			</exclusions>
 		</dependency>
 		<!-- extentreport报表的依赖 -->
-		<dependency>            
+		 <dependency>            
 			<groupId>com.relevantcodes</groupId>           
 		 	<artifactId>extentreports</artifactId>            
 		 	<version>2.41.1</version>       
@@ -102,7 +104,7 @@
 		   	<groupId>com.aventstack</groupId>           
 		    <artifactId>extentreports</artifactId>          
 		    <version>3.0.6</version>        
-		</dependency>
+		</dependency> 
 	</dependencies>
 	<build>
 		<plugins>
@@ -122,20 +124,21 @@
 				</configuration>
 			</plugin>
 			 -->
+			 <!--Maven 构建插件 运行 maven test时调用Allure实现测试报告生成  -->
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20</version>
                 <configuration>
-                	<useSystemClassLoader>false</useSystemClassLoader>
+                	<!-- <useSystemClassLoader>false</useSystemClassLoader> -->
                     	<!-- 设置参数命令行 -->
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-                    <systemPropertyVariables>
-                        <!-- 是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦 -->
+<!--                     <systemPropertyVariables>
+                        是否忽略html，解释见下图。与之后在reportNg报告上显示截图相关。当前已经使用allure了，这里可以直接去掉啦
                         <org.uncommons.reportng.escape-output>false</org.uncommons.reportng.escape-output>
-                    </systemPropertyVariables>
+                    </systemPropertyVariables> -->
                <!--      测试失败后，是否忽略并继续测试 -->
                     <testFailureIgnore>true</testFailureIgnore>
                     <!-- <argLine>-Dfile.encoding=UTF-8</argLine> -->
@@ -145,6 +148,7 @@
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
+                <!--Allure 实现TestNG报告解析优化所需jar包  -->
                 	<dependency>
                 		<groupId>org.aspectj</groupId>
                 		<artifactId>aspectjweaver</artifactId>
