@@ -3,6 +3,8 @@ package com.dywl.iot.testCase.RTU;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.dywl.iot.page.RtuAddPage;
@@ -17,12 +19,20 @@ import io.qameta.allure.Story;
 @Feature("正向测试")
 public class Success_Add_Test extends RtuAddPage {
 	
+	@BeforeClass
+	public void beforClass() {
+		click("点击运行","导航页面");
+		WaitTime();
+		click("点击配电箱","导航页面");
+		WaitTime();
+	}
+	
 	@Story("添加配电箱，正确添加参数")
 	@Description("正确添加RTU")
 	@Step("验证正常添加RTU功能")
 	@Test
 	public void addRtu() {
-		to("rtuUrl");
+		//to("rtuUrl");
 		click("新增配电箱按钮","配电箱新增页面");
 		SimpleDateFormat gprs = new SimpleDateFormat("yyyyMMddHHmmss");
 		SimpleDateFormat rtuno = new SimpleDateFormat("MdHmm");
@@ -38,5 +48,12 @@ public class Success_Add_Test extends RtuAddPage {
 		//配电箱创建成功
 		String expectStr="配电箱创建成功";
 		assertPartialTextPresent("创建成功",expectStr,"配电箱新增页面");
+		WaitTime();
 	}
+	
+	@AfterClass
+	public void afterClass() {
+		moveToElement("点击返回","导航页面");
+	}
+	
 }

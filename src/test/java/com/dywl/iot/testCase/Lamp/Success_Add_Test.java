@@ -3,6 +3,7 @@ package com.dywl.iot.testCase.Lamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import com.dywl.iot.base.BaseTest;
@@ -14,19 +15,28 @@ import io.qameta.allure.Story;
 @Epic("灯杆模块")
 @Feature("添加灯杆正向测试")
 public class Success_Add_Test extends BaseTest {
-
+	
 	@Story("正确添加灯杆")
 	@Test
 	public void addLamp() throws InterruptedException {
 		to("lampUrl");
 		click("新增灯杆","灯杆添加页面");
+		WaitTime();
+		click("选择灯具类型","灯杆添加页面");
+		WaitTime();
+		click("LED灯","灯杆添加页面");
+		WaitTime();
 		SimpleDateFormat lampNum = new SimpleDateFormat("MdHm");
 		String LampName="L_"+lampNum.format(new Date());
 		type("输入灯杆编号",LampName,"灯杆添加页面");
 		WaitTime();
 		click("选择照明场景","灯杆添加页面");
 		WaitTime();
-		click("选择道路照明","灯杆添加页面");
+		moveToElement("选择道路照明","灯杆添加页面");
+		WaitTime();
+		click("点击责任区","灯杆添加页面");
+		WaitTime();
+		moveToElement("选择责任区","灯杆添加页面");
 		WaitTime();
 		clear("经度","灯杆添加页面");
 		type("经度", "120.0"+lampNum.format(new Date()),"灯杆添加页面");
@@ -37,5 +47,11 @@ public class Success_Add_Test extends BaseTest {
 		moveToElement("保存灯杆按钮","灯杆添加页面");
 		WaitTime();
 		assertPartialTextPresent("灯杆名称", LampName,"灯杆添加页面");
+		WaitTime();
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		moveToElement("点击返回","导航页面");
 	}
 }

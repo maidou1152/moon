@@ -3,6 +3,8 @@ package com.dywl.iot.testCase.Guard;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.dywl.iot.base.BaseTest;
@@ -16,11 +18,18 @@ import io.qameta.allure.Story;
 @Feature("添加防盗反向测试")
 public class Failure_Add_Test extends BaseTest {
 	
+	@BeforeClass
+	public void beforClass() {
+		click("点击运行", "导航页面");
+		WaitTime();
+		click("点击防盗", "导航页面");
+	}
+	
 	@Story("添加防盗,不输入主机名称")
 	@Description("不输入主机名称")
 	@Test
 	public void addNoHostName(){
-		to("guardUrl");
+		//to("guardUrl");
 		click("添加防盗","防盗添加页面");
 		SimpleDateFormat guardno = new SimpleDateFormat("MdHm");
 		String guardname=guardno.format(new Date());
@@ -43,7 +52,7 @@ public class Failure_Add_Test extends BaseTest {
 	@Description("不输入设备编号")
 	@Test
 	public void addNoEquipmentNumber(){
-		to("guardUrl");
+		//to("guardUrl");
 		click("添加防盗","防盗添加页面");
 		SimpleDateFormat guardno = new SimpleDateFormat("MdHm");
 		String guardname=guardno.format(new Date());
@@ -60,5 +69,10 @@ public class Failure_Add_Test extends BaseTest {
 		moveToElement("保存","防盗添加页面");
 		String expectStr="请输入设备编号";
 		assertPartialTextPresent("请输入设备编号",expectStr,"防盗添加页面");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		moveToElement("点击返回", "导航页面");
 	}
 }

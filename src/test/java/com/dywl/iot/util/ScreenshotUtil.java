@@ -33,6 +33,8 @@ public class ScreenshotUtil {
 	 * @return 
 	 */
 	public static File takeScreenshot(String screenshotDir) {
+		return null;
+		/*
 		//拿到driver
 		WebDriver driver = BaseTest.getDriver();
 		// 当前时间
@@ -57,8 +59,10 @@ public class ScreenshotUtil {
 			e.printStackTrace();
 		}
 		return destFile;
+		*/
 	}
 
+	/*
 	@Deprecated
 	public static void takeScreenshot2(String screenshotDir) {
 		WebDriver driver = BaseTest.getDriver();
@@ -157,5 +161,5 @@ public class ScreenshotUtil {
 		System.out.println(time);
 		Date date2 = new Date();
 		System.out.println(date2.getTime());
-	}
+	}*/
 }

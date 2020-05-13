@@ -2,6 +2,8 @@ package com.dywl.iot.testCase.Lamp;
 
 import java.util.Random;
 
+import org.junit.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -19,23 +21,28 @@ public class Success_Update_Test extends BaseTest {
 	
 	@BeforeClass
 	public void beforeClass() throws InterruptedException {
+		iotLogin();
+		click("点击运行","导航页面");
+		WaitTime();
+		click("点击灯杆","导航页面");
+		WaitTime();
+	}
+
+	private void iotLogin() {
 		to("iotLogin");
 		maxWindow();
 		type("用户名输入框", "admin327", "登录页面");
 		moveToElement("密码输入框", "登录页面");
 		type("密码输入框", "12345678!","登录页面");
 		moveToElement("登录按钮", "登录页面");
-		click("点击运行","导航页面");
-		WaitTime();
-		click("点击灯杆","导航页面");
 	}
 	
 	@Story("添加2G单灯")
 	@Description("添加GPRS单灯")
 	@Test
 	public void addGprsLamp() {
-		refresh();
 		click("选中第一行的数据","灯杆编辑页面");
+		WaitTime();
 		click("灯杆编辑按钮","灯杆编辑页面");
 		moveToElement("控制器按钮","灯杆编辑页面");
 		WaitTime();
@@ -47,5 +54,12 @@ public class Success_Update_Test extends BaseTest {
 		type("单灯编号", "GPRS_"+rand,"灯杆编辑页面");
 		WaitTime();
 		click("单灯保存按钮","灯杆编辑页面");
+		Assert.assertFalse(true);
+		WaitTime();
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		moveToElement("点击返回", "导航页面");
 	}
 }

@@ -28,7 +28,7 @@ import com.dywl.iot.util.SeleniumUtil;
  * @author asus
  *
  */
-@Listeners({TestngListener.class})
+@Listeners(TestngListener.class)
 public class BaseTest {
 	
 	/**
@@ -42,6 +42,7 @@ public class BaseTest {
 	 * 加static:类属性、静态属性  当这个类被加载到jvm中间会首先初始化，在内存中只会有一份
 	 */
 	protected static WebDriver driver=null;
+	//public WebDriver driver;
 	
 	@BeforeSuite
 	//把testng.xml中间的参数给注入进入
@@ -372,7 +373,7 @@ public class BaseTest {
 	 * @param pageclazz
 	 */
 	protected void clear(String keyWord,Class<?> pageclazz) {
-		logger.info("往["+keyWord+"]元素清楚内容");
+		logger.info("往["+keyWord+"]元素清除内容");
 		WebElement webElement=getElement(keyWord,pageclazz);
 		webElement.clear();
 	}
@@ -649,7 +650,9 @@ public class BaseTest {
 	 * 提供driver
 	 * @return
 	 */
-	public static  WebDriver getDriver() {
+	public WebDriver getDriver() {
 		return driver;
 	}
+	
+	
 }
